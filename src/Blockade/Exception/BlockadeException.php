@@ -2,7 +2,7 @@
 
 namespace Blockade\Exception;
 
-use Blockade\Driver\SecurityDriverInterface;
+use Blockade\Driver\DriverInterface;
 
 use Symfony\Component\HttpFoundation\Request;
 
@@ -16,18 +16,18 @@ abstract class BlockadeException extends \Exception
 
     protected $driver;
 
-    public function __construct(SecurityDriverInterface $driver, $message = '', $code = 403, \Exception $previous = null)
+    public function __construct(DriverInterface $driver, $message = '', $code = 403, \Exception $previous = null)
     {
         parent::__construct($message, $code, $previous);
         $this->driver = $driver;
     }
 
-    public function setSecurityDriver(SecurityDriverInterface $driver)
+    public function setDriver(DriverInterface $driver)
     {
         $this->driver = $driver;
     }
 
-    public function getSecurityDriver()
+    public function getDriver()
     {
         return $this->driver;
     }

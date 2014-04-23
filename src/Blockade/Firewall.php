@@ -2,7 +2,7 @@
 
 namespace Blockade;
 
-use Blockade\Driver\SecurityDriverInterface;
+use Blockade\Driver\DriverInterface;
 use Blockade\Exception\AnonymousException;
 use Blockade\Exception\AuthenticationException;
 use Blockade\Exception\AuthorizationException;
@@ -28,7 +28,7 @@ class Firewall
     protected $user;
     protected $anon;
 
-    public function __construct($name, SecurityDriverInterface $security)
+    public function __construct($name, DriverInterface $security)
     {
         $this->name = $name;
         $this->any = 'ANY';

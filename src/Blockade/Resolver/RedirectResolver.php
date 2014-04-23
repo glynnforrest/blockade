@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
  *
  * @author Glynn Forrest <me@glynnforrest.com>
  **/
-class RedirectResolver implements SecurityResolverInterface
+class RedirectResolver implements ResolverInterface
 {
 
     protected $login_url;
@@ -54,7 +54,7 @@ class RedirectResolver implements SecurityResolverInterface
 
         //if tampering is evident, log the user out
         if ($exception instanceof CsrfTokenException) {
-            $exception->getSecurityDriver()->logout();
+            $exception->getDriver()->logout();
         }
 
         return new RedirectResponse($url);

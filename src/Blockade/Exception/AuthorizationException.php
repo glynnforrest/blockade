@@ -2,7 +2,7 @@
 
 namespace Blockade\Exception;
 
-use Blockade\Driver\SecurityDriverInterface;
+use Blockade\Driver\DriverInterface;
 
 /**
  * AuthorizationException is thrown when the client does not have
@@ -13,7 +13,7 @@ use Blockade\Driver\SecurityDriverInterface;
 class AuthorizationException extends BlockadeException
 {
 
-    public function __construct(SecurityDriverInterface $driver, $message = 'Access denied', \Exception $previous = null)
+    public function __construct(DriverInterface $driver, $message = 'Access denied', \Exception $previous = null)
     {
         parent::__construct($driver, $message, 403, $previous);
     }

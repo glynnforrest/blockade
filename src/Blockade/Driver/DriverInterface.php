@@ -5,10 +5,10 @@ namespace Blockade\Driver;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * SecurityDriverInterface
+ * DriverInterface
  * @author Glynn Forrest me@glynnforrest.com
  **/
-interface SecurityDriverInterface
+interface DriverInterface
 {
 
     public function setRequest(Request $request);

@@ -2,14 +2,14 @@
 
 namespace Blockade\Driver;
 
-use Blockade\Driver\AbstractSecurityDriver;
+use Blockade\Driver\AbstractDriver;
 
 /**
  * CsrfDriver is a driver that is only used by the CsrfManager.
  *
  * @author Glynn Forrest me@glynnforrest.com
  **/
-class CsrfDriver extends AbstractSecurityDriver
+class CsrfDriver extends AbstractDriver
 {
 
     public function authenticate()

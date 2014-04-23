@@ -2,7 +2,7 @@
 
 namespace Blockade\Exception;
 
-use Blockade\Driver\SecurityDriverInterface;
+use Blockade\Driver\DriverInterface;
 
 /**
  * BlockadeFailureException should be thrown when blockade

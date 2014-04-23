@@ -7,11 +7,11 @@ use Blockade\Exception\BlockadeException;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * SecurityResolverInterface
+ * ResolverInterface
  *
  * @author Glynn Forrest <me@glynnforrest.com>
  **/
-interface SecurityResolverInterface
+interface ResolverInterface
 {
 
     public function onException(BlockadeException $exception, Request $request);

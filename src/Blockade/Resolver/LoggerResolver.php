@@ -14,7 +14,7 @@ use Psr\Log\LogLevel;
  *
  * @author Glynn Forrest <me@glynnforrest.com>
  **/
-class LoggerResolver implements SecurityResolverInterface
+class LoggerResolver implements ResolverInterface
 {
     protected $logger;
     protected $level;
@@ -29,7 +29,7 @@ class LoggerResolver implements SecurityResolverInterface
     {
         $this->logger->log($this->level, sprintf(
             '%s threw %s with message "%s" from ip %s on page %s',
-            get_class($exception->getSecurityDriver()),
+            get_class($exception->getDriver()),
             get_class($exception),
             $exception->getMessage(),
             $request->getClientIp(),

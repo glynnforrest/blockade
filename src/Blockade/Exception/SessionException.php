@@ -2,7 +2,7 @@
 
 namespace Blockade\Exception;
 
-use Blockade\Driver\SecurityDriverInterface;
+use Blockade\Driver\DriverInterface;
 
 /**
  * SessionException is thrown when the session is invalid or has
@@ -13,7 +13,7 @@ use Blockade\Driver\SecurityDriverInterface;
 class SessionException extends BlockadeException
 {
 
-    public function __construct(SecurityDriverInterface $driver, $message = 'Session is invalid', \Exception $previous = null)
+    public function __construct(DriverInterface $driver, $message = 'Session is invalid', \Exception $previous = null)
     {
         parent::__construct($driver, $message, 403, $previous);
     }

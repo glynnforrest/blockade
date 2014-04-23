@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
  *
  * @author Glynn Forrest <me@glynnforrest.com>
  **/
-class DenyAccessResolver implements SecurityResolverInterface
+class DenyAccessResolver implements ResolverInterface
 {
     protected $message;
 

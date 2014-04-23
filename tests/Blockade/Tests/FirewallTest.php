@@ -21,7 +21,7 @@ class FirewallTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->driver = $this->getMock('\Blockade\Driver\SecurityDriverInterface');
+        $this->driver = $this->getMock('\Blockade\Driver\DriverInterface');
         $this->firewall = new Firewall('testing', $this->driver);
     }
 

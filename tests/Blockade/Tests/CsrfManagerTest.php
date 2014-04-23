@@ -98,7 +98,7 @@ class CsrfManagerTest extends \PHPUnit_Framework_TestCase
         try {
             $this->manager->check('foo', 'bar');
         } catch (CsrfTokenException $e) {
-            $this->assertInstanceOf('\Blockade\Driver\CsrfDriver', $e->getSecurityDriver());
+            $this->assertInstanceOf('\Blockade\Driver\CsrfDriver', $e->getDriver());
         }
     }
 

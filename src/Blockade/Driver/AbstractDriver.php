@@ -2,16 +2,16 @@
 
 namespace Blockade\Driver;
 
-use Blockade\Driver\SecurityDriverInterface;
+use Blockade\Driver\DriverInterface;
 use Blockade\Exception\BlockadeFailureException;
 
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * AbstractSecurityDriver
+ * AbstractDriver
  * @author Glynn Forrest me@glynnforrest.com
  **/
-abstract class AbstractSecurityDriver implements SecurityDriverInterface
+abstract class AbstractDriver implements DriverInterface
 {
 
     protected $request;

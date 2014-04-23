@@ -2,7 +2,7 @@
 
 namespace Blockade\Exception;
 
-use Blockade\Driver\SecurityDriverInterface;
+use Blockade\Driver\DriverInterface;
 
 /**
  * CredentialsException is thrown when authentication fails due to
@@ -13,7 +13,7 @@ use Blockade\Driver\SecurityDriverInterface;
 class CredentialsException extends BlockadeException
 {
 
-    public function __construct(SecurityDriverInterface $driver, $message = 'Bad credentials supplied', \Exception $previous = null)
+    public function __construct(DriverInterface $driver, $message = 'Bad credentials supplied', \Exception $previous = null)
     {
         parent::__construct($driver, $message, 401, $previous);
     }

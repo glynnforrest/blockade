@@ -2,13 +2,13 @@
 
 namespace Blockade\Driver;
 
-use Blockade\Driver\AbstractSecurityDriver;
+use Blockade\Driver\AbstractDriver;
 
 /**
  * FailDriver
  * @author Glynn Forrest me@glynnforrest.com
  **/
-class FailDriver extends AbstractSecurityDriver
+class FailDriver extends AbstractDriver
 {
 
     public function authenticate()

@@ -1,0 +1,26 @@
+{
+    "name": "glynnforrest/blockade",
+    "description": "An easy to use firewall and security library for PHP and the Symfony HttpKernel.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Glynn Forrest",
+            "email": "me@glynnforrest.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "symfony/http-foundation": "2.4.*"
+    },
+    "require-dev": {
+        "symfony/event-dispatcher": "2.4.*"
+    },
+    "suggest": {
+        "symfony/event-dispatcher": "Allow the sending of form events"
+    },
+    "autoload": {
+        "psr-4": {
+            "Blockade\\": "src/Blockade"
+        }
+    }
+}

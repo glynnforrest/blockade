@@ -10,7 +10,7 @@ use Blockade\Driver\SecurityDriverInterface;
  *
  * @author Glynn Forrest <me@glynnforrest.com>
  **/
-class CsrfTokenException extends SecurityException
+class CsrfTokenException extends BlockadeException
 {
 
     public function __construct(SecurityDriverInterface $driver, $message = 'Invalid csrf token supplied', \Exception $previous = null)

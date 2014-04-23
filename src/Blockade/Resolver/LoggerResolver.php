@@ -2,7 +2,7 @@
 
 namespace Blockade\Resolver;
 
-use Blockade\Exception\SecurityException;
+use Blockade\Exception\BlockadeException;
 use Symfony\Component\HttpFoundation\Request;
 
 use Psr\Log\LoggerInterface;
@@ -25,7 +25,7 @@ class LoggerResolver implements SecurityResolverInterface
         $this->level = $level;
     }
 
-    public function onException(SecurityException $exception, Request $request)
+    public function onException(BlockadeException $exception, Request $request)
     {
         $this->logger->log($this->level, sprintf(
             '%s threw %s with message "%s" from ip %s on page %s',

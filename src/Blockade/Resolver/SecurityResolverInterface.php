@@ -2,7 +2,7 @@
 
 namespace Blockade\Resolver;
 
-use Blockade\Exception\SecurityException;
+use Blockade\Exception\BlockadeException;
 
 use Symfony\Component\HttpFoundation\Request;
 
@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 interface SecurityResolverInterface
 {
 
-    public function onException(SecurityException $exception, Request $request);
+    public function onException(BlockadeException $exception, Request $request);
 
     public function getSupportedExceptions();
 

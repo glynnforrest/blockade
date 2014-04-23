@@ -10,7 +10,7 @@ use Blockade\Driver\SecurityDriverInterface;
  *
  * @author Glynn Forrest <me@glynnforrest.com>
  **/
-class SessionException extends SecurityException
+class SessionException extends BlockadeException
 {
 
     public function __construct(SecurityDriverInterface $driver, $message = 'Session is invalid', \Exception $previous = null)

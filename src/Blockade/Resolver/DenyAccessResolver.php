@@ -2,7 +2,7 @@
 
 namespace Blockade\Resolver;
 
-use Blockade\Exception\SecurityException;
+use Blockade\Exception\BlockadeException;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,7 +22,7 @@ class DenyAccessResolver implements SecurityResolverInterface
         $this->message = $message;
     }
 
-    public function onException(SecurityException $exception, Request $request)
+    public function onException(BlockadeException $exception, Request $request)
     {
         return new Response($this->message, 403);
     }

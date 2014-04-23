@@ -9,7 +9,7 @@ use Blockade\Driver\SecurityDriverInterface;
  *
  * @author Glynn Forrest <me@glynnforrest.com>
  **/
-class AuthenticationException extends SecurityException
+class AuthenticationException extends BlockadeException
 {
 
     public function __construct(SecurityDriverInterface $driver, $message = 'Authentication required', \Exception $previous = null)

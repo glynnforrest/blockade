@@ -10,7 +10,7 @@ use Blockade\Driver\SecurityDriverInterface;
  *
  * @author Glynn Forrest <me@glynnforrest.com>
  **/
-class AnonymousException extends SecurityException
+class AnonymousException extends BlockadeException
 {
 
     public function __construct(SecurityDriverInterface $driver, $message = 'Access denied', \Exception $previous = null)

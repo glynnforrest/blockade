@@ -7,11 +7,11 @@ use Blockade\Driver\SecurityDriverInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * SecurityException
+ * BlockadeException
  *
  * @author Glynn Forrest <me@glynnforrest.com>
  **/
-abstract class SecurityException extends \Exception
+abstract class BlockadeException extends \Exception
 {
 
     protected $driver;

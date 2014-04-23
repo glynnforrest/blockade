@@ -10,7 +10,7 @@ use Blockade\Driver\SecurityDriverInterface;
  *
  * @author Glynn Forrest <me@glynnforrest.com>
  **/
-class CredentialsException extends SecurityException
+class CredentialsException extends BlockadeException
 {
 
     public function __construct(SecurityDriverInterface $driver, $message = 'Bad credentials supplied', \Exception $previous = null)

@@ -10,7 +10,7 @@ use Blockade\Driver\SecurityDriverInterface;
  *
  * @author Glynn Forrest <me@glynnforrest.com>
  **/
-class AuthorizationException extends SecurityException
+class AuthorizationException extends BlockadeException
 {
 
     public function __construct(SecurityDriverInterface $driver, $message = 'Access denied', \Exception $previous = null)

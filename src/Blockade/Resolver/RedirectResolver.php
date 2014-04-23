@@ -2,7 +2,7 @@
 
 namespace Blockade\Resolver;
 
-use Blockade\Exception\SecurityException;
+use Blockade\Exception\BlockadeException;
 use Blockade\Exception\BlockadeFailureException;
 use Blockade\Exception\CsrfException;
 use Blockade\Exception\AuthenticationException;
@@ -33,7 +33,7 @@ class RedirectResolver implements SecurityResolverInterface
         $this->deny_url = $deny_url;
     }
 
-    public function onException(SecurityException $exception, Request $request)
+    public function onException(BlockadeException $exception, Request $request)
     {
         //decide where to redirect. login_url for unauthenticated or
         //bad credentials, deny_url for unauthorized or anything else

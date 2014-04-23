@@ -6,7 +6,7 @@ use Blockade\Driver\SecurityDriverInterface;
 use Blockade\Exception\AnonymousException;
 use Blockade\Exception\AuthenticationException;
 use Blockade\Exception\AuthorizationException;
-use Blockade\Exception\SecurityException;
+use Blockade\Exception\BlockadeException;
 
 use Symfony\Component\HttpFoundation\RequestMatcherInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -125,7 +125,7 @@ class Firewall
                 }
                 //catch any security exceptions - we dont want
                 //to fail the firewall if an exemption fails
-            } catch (SecurityException $e) {}
+            } catch (BlockadeException $e) {}
         }
 
         //check the rules. If they fail they will throw exceptions.

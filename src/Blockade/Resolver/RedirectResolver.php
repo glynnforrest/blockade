@@ -3,7 +3,7 @@
 namespace Blockade\Resolver;
 
 use Blockade\Exception\SecurityException;
-use Blockade\Exception\SecurityServiceException;
+use Blockade\Exception\BlockadeFailureException;
 use Blockade\Exception\CsrfException;
 use Blockade\Exception\AuthenticationException;
 use Blockade\Exception\CredentialsException;
@@ -45,7 +45,7 @@ class RedirectResolver implements SecurityResolverInterface
 
         //check for a potential redirect loop
         if($request->getPathInfo() === $url && $request->getMethod() === 'GET') {
-            throw new SecurityServiceException(
+            throw new BlockadeFailureException(
                 sprintf('Circular redirect to %s detected', $url),
                 500,
                 $exception

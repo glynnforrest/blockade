@@ -3,7 +3,7 @@
 namespace Blockade\Driver;
 
 use Blockade\Driver\SecurityDriverInterface;
-use Blockade\Exception\SecurityServiceException;
+use Blockade\Exception\BlockadeFailureException;
 
 use Symfony\Component\HttpFoundation\Request;
 
@@ -30,10 +30,10 @@ abstract class AbstractSecurityDriver implements SecurityDriverInterface
     protected function getSession()
     {
         if (!$this->request) {
-            throw new SecurityServiceException("No Request defined");
+            throw new BlockadeFailureException("No Request defined");
         }
         if (!$this->request->hasSession()) {
-            throw new SecurityServiceException("No Session defined");
+            throw new BlockadeFailureException("No Session defined");
         }
         //check for invalid session
         return $this->request->getSession();

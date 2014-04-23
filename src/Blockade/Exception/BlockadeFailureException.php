@@ -5,11 +5,11 @@ namespace Blockade\Exception;
 use Blockade\Driver\SecurityDriverInterface;
 
 /**
- * SecurityServiceException should be thrown when the security service
+ * BlockadeFailureException should be thrown when blockade
  * itself encounters an error.
  *
  * @author Glynn Forrest <me@glynnforrest.com>
  **/
-class SecurityServiceException extends \Exception
+class BlockadeFailureException extends \Exception
 {
 }

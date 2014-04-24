@@ -53,7 +53,7 @@ class Firewall
     }
 
     /**
-     * Add a exemption to this Firewall. If a request passes this
+     * Add an exemption to this Firewall. If a request passes this
      * exemption it will be granted explicit access, skipping any
      * other firewall rules.
      *
@@ -109,7 +109,7 @@ class Firewall
      *
      * @param  Request $request The request to check
      * @return Boolean true if the request is granted explicit access
-     * via a exemption, false if the request passed but has not been
+     * via an exemption, false if the request passed but has not been
      * granted explicit access (allowing other firewalls to check)
      * @throws AuthenticationException if the request is not authenticated
      * @throws AuthorizationException  if the request is not authorized
@@ -117,14 +117,15 @@ class Firewall
     public function check(Request $request)
     {
         //first check the exemptions. If the request passes any of
-        //these, skip all other rules and firewalls.
+        //these, skip all other rules and grant explicit access.
         foreach ($this->exemptions as $exemption) {
             try {
                 if (true === $this->checkRule($request, $exemption)) {
                     return true;
                 }
-                //catch any security exceptions - we dont want
-                //to fail the firewall if an exemption fails
+                //catch any exceptions - a failed exemption shouldn't
+                //fail the firewall entirely. Just move to on to the
+                //next one.
             } catch (BlockadeException $e) {}
         }
 

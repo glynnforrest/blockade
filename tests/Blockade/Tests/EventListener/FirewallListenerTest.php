@@ -76,7 +76,6 @@ class FirewallListenerTest extends \PHPUnit_Framework_TestCase
                       ->getMock();
         $event->expects($this->once())
               ->method('getRequest')
-              ->with()
               ->will($this->returnValue($request));
         return $event;
     }

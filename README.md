@@ -14,7 +14,7 @@ composer.json file:
 
 	{
 		"require": {
-			"glynnforrest/blockade": "0.3.*"
+			"glynnforrest/blockade": "0.1.*"
 		}
 	}
 

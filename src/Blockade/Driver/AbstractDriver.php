@@ -27,6 +27,11 @@ abstract class AbstractDriver implements DriverInterface
         return $this->request;
     }
 
+    public function hasRequest()
+    {
+        return $this->request ? true : false;
+    }
+
     protected function getSession()
     {
         if (!$this->request) {

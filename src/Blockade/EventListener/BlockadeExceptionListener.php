@@ -71,7 +71,6 @@ class BlockadeExceptionListener implements EventSubscriberInterface
         } catch (\Exception $e) {
             //if anything at all goes wrong in calling the
             //resolvers, pass the exception on
-            echo $e->getMessage();
             $event->setException($e);
         }
     }

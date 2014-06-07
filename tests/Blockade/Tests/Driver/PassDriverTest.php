@@ -24,6 +24,7 @@ class PassDriverTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('\Blockade\Driver\DriverInterface', $this->driver);
         $this->assertInstanceOf('\Blockade\Driver\AbstractDriver', $this->driver);
     }
+
     public function testAuthenticate()
     {
         $this->assertTrue($this->driver->authenticate());

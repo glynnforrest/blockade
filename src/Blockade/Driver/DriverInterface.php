@@ -15,6 +15,8 @@ interface DriverInterface
 
     public function getRequest();
 
+    public function hasRequest();
+
     public function authenticate();
 
     public function login($identifier);

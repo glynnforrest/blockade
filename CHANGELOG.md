@@ -1,5 +1,10 @@
 Changelog
 =========
+### 0.1.2 2014-06-08
+
+Adding a RequestListener to automatically give the Request to
+registered drivers. This allows usage of a driver when you don't have
+access to the request (e.g. in a template).
 
 ### 0.1.1 2014-06-07
 

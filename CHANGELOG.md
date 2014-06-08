@@ -1,6 +1,10 @@
 Changelog
 =========
 
+### 0.1.1 2014-06-07
+
+Addition of hasRequest() to DriverInterface.
+
 ### 0.1.0 2014-04-28
 
 Initial release. Here are the current features:

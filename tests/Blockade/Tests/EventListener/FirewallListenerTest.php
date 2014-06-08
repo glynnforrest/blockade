@@ -18,7 +18,7 @@ require_once __DIR__ . '/../../../bootstrap.php';
 class FirewallListenerTest extends \PHPUnit_Framework_TestCase
 {
 
-    protected $firewall;
+    protected $listener;
 
     public function setUp()
     {

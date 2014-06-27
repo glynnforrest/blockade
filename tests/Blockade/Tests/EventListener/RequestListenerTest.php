@@ -61,7 +61,30 @@ class RequestListenerTest extends \PHPUnit_Framework_TestCase
                       ->with($request);
 
         $this->listener->onKernelRequest($event);
+    }
 
+    public function testOnKernelRequestWithRequestAlready()
+    {
+        $request = new Request();
+        $event = $this->getMockBuilder('Symfony\Component\HttpKernel\Event\GetResponseEvent')
+                      ->disableOriginalConstructor()
+                      ->getMock();
+
+        $event->expects($this->once())
+              ->method('getRequest')
+              ->will($this->returnValue($request));
+
+        $driver = $this->getMock('Blockade\Driver\DriverInterface');
+        $driver->expects($this->once())
+               ->method('hasRequest')
+               ->will($this->returnValue(true));
+
+        $this->listener->addDriver($driver);
+
+        $driver->expects($this->never())
+               ->method('setRequest');
+
+        $this->listener->onKernelRequest($event);
     }
 
 }

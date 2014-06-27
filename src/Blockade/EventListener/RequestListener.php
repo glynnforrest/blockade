@@ -46,7 +46,9 @@ class RequestListener implements EventSubscriberInterface
     {
         $request = $event->getRequest();
         foreach ($this->drivers as $driver) {
-            $driver->setRequest($request);
+            if (!$driver->hasRequest()) {
+                $driver->setRequest($request);
+            }
         }
 
         return true;

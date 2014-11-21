@@ -82,7 +82,8 @@ class CsrfManagerTest extends \PHPUnit_Framework_TestCase
 
     public function testDifferentTokenIdIsInvalid()
     {
-        $this->setExpectedException('\Blockade\Exception\CsrfTokenException');
+        $msg = 'Invalid CSRF token supplied';
+        $this->setExpectedException('\Blockade\Exception\CsrfTokenException', $msg);
         $this->manager->check('not-testing', 'token');
     }
 
@@ -91,15 +92,6 @@ class CsrfManagerTest extends \PHPUnit_Framework_TestCase
         /* $this->driver->expects($this->once()) */
         /*              ->method('secureEquals') */
         /*              ->with(); */
-    }
-
-    public function testExceptionHasCsrfDriver()
-    {
-        try {
-            $this->manager->check('foo', 'bar');
-        } catch (CsrfTokenException $e) {
-            $this->assertInstanceOf('\Blockade\Driver\CsrfDriver', $e->getDriver());
-        }
     }
 
 }

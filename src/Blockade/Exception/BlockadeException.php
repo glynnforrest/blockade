@@ -4,8 +4,6 @@ namespace Blockade\Exception;
 
 use Blockade\Driver\DriverInterface;
 
-use Symfony\Component\HttpFoundation\Request;
-
 /**
  * BlockadeException
  *
@@ -13,23 +11,40 @@ use Symfony\Component\HttpFoundation\Request;
  **/
 abstract class BlockadeException extends \Exception
 {
-
     protected $driver;
 
-    public function __construct(DriverInterface $driver, $message = '', $code = 403, \Exception $previous = null)
+    /**
+     * Factory method to set the driver that created this exception.
+     *
+     * @param DriverInterface $driver The driver
+     */
+    public static function from(DriverInterface $driver, $message = '', $code = 403, \Exception $previous = null)
     {
-        parent::__construct($message, $code, $previous);
-        $this->driver = $driver;
+        $self = new static($message, $code, $previous);
+        $self->setDriver($driver);
+
+        return $self;
     }
 
+    /**
+     * Set the driver that created this exception. This can be used by
+     * resolvers to determine how to handle a violation.
+     *
+     * @param DriverInterface $driver The driver
+     */
     public function setDriver(DriverInterface $driver)
     {
         $this->driver = $driver;
     }
 
+    /**
+     * Get the driver that created this exception. This is optional - no
+     * driver may be set.
+     *
+     * @return DriverInterface | null The driver or null
+     */
     public function getDriver()
     {
         return $this->driver;
     }
-
 }

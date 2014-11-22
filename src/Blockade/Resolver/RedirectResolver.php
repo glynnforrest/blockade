@@ -2,12 +2,11 @@
 
 namespace Blockade\Resolver;
 
+use Blockade\Driver\DriverInterface;
 use Blockade\Exception\BlockadeException;
 use Blockade\Exception\BlockadeFailureException;
-use Blockade\Exception\CsrfException;
 use Blockade\Exception\AuthenticationException;
 use Blockade\Exception\CredentialsException;
-
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
@@ -18,7 +17,6 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
  **/
 class RedirectResolver implements ResolverInterface
 {
-
     protected $login_url;
     protected $deny_url;
 
@@ -44,7 +42,7 @@ class RedirectResolver implements ResolverInterface
         }
 
         //check for a potential redirect loop
-        if($request->getPathInfo() === $url && $request->getMethod() === 'GET') {
+        if ($request->getPathInfo() === $url && $request->getMethod() === 'GET') {
             throw new BlockadeFailureException(
                 sprintf('Circular redirect to %s detected', $url),
                 500,
@@ -60,14 +58,13 @@ class RedirectResolver implements ResolverInterface
         return new RedirectResponse($url);
     }
 
-    public function getSupportedDrivers()
+    public function supportsDriver(DriverInterface $driver)
     {
         return true;
     }
 
-    public function getSupportedExceptions()
+    public function supportsException(BlockadeException $exception)
     {
         return true;
     }
-
 }

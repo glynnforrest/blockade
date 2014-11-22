@@ -3,6 +3,7 @@
 namespace Blockade\Resolver;
 
 use Blockade\Exception\BlockadeException;
+use Blockade\Driver\DriverInterface;
 
 use Symfony\Component\HttpFoundation\Request;
 
@@ -16,8 +17,8 @@ interface ResolverInterface
 
     public function onException(BlockadeException $exception, Request $request);
 
-    public function getSupportedExceptions();
+    public function supportsDriver(DriverInterface $driver);
 
-    public function getSupportedDrivers();
+    public function supportsException(BlockadeException $exception);
 
 }

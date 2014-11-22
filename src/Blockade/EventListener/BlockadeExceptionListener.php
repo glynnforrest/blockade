@@ -48,11 +48,12 @@ class BlockadeExceptionListener implements EventSubscriberInterface
         //really
         try {
             foreach ($this->resolvers as $resolver) {
-                if (!$this->resolverSupportsException($resolver, $exception)) {
+                $driver = $exception->getDriver();
+                if (!$driver || !$resolver->supportsDriver($driver)) {
                     continue;
                 }
 
-                if (!$this->resolverSupportsDriver($resolver, $exception->getDriver())) {
+                if (!$resolver->supportsException($exception)) {
                     continue;
                 }
 
@@ -61,7 +62,7 @@ class BlockadeExceptionListener implements EventSubscriberInterface
                 if ($response instanceof Response) {
                     $event->setResponse($response);
 
-                    return true;
+                    return;
                 }
             }
             //no response has been created by now, so let other
@@ -80,40 +81,4 @@ class BlockadeExceptionListener implements EventSubscriberInterface
             KernelEvents::EXCEPTION => array('onKernelException')
         );
     }
-
-    public function resolverSupportsException(ResolverInterface $resolver, BlockadeException $exception)
-    {
-        $supported = $resolver->getSupportedExceptions();
-
-        if (true === $supported) {
-            return true;
-        }
-        if (!is_array($supported)) {
-            return false;
-        }
-        if (in_array(get_class($exception), $supported)) {
-            return true;
-        }
-
-        return false;
-    }
-
-    public function resolverSupportsDriver(ResolverInterface $resolver, DriverInterface $driver)
-    {
-        $supported = $resolver->getSupportedDrivers();
-
-        if (true === $supported) {
-            return true;
-        }
-
-        if (!is_array($supported)) {
-            return false;
-        }
-        if (in_array(get_class($driver), $supported)) {
-            return true;
-        }
-
-        return false;
-    }
-
 }

@@ -12,8 +12,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 
-require_once __DIR__ . '/../../../bootstrap.php';
-
 /**
  * BlockadeExceptionListenerTest
  *
@@ -74,17 +72,19 @@ class BlockadeExceptionListenerTest extends \PHPUnit_Framework_TestCase
     public function testOnKernelException()
     {
         $driver = new FailDriver();
-        $exception = new AuthorizationException($driver);
+        $exception = AuthorizationException::from($driver);
         $request = new Request();
         $response = new Response();
 
         $resolver = $this->newResolver();
         $this->listener->addResolver($resolver);
         $resolver->expects($this->once())
-                 ->method('getSupportedExceptions')
+                 ->method('supportsDriver')
+                 ->with($driver)
                  ->will($this->returnValue(true));
         $resolver->expects($this->once())
-                 ->method('getSupportedDrivers')
+                 ->method('supportsException')
+                 ->with($exception)
                  ->will($this->returnValue(true));
         $resolver->expects($this->once())
                  ->method('onException')

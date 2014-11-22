@@ -2,39 +2,31 @@
 
 namespace Blockade\Resolver;
 
+use Blockade\Driver\DriverInterface;
 use Blockade\Exception\BlockadeException;
-
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * DenyAccessResolver is a simple resolver that responds with a 403
- * (forbidden) Response
+ * DenyAccessResolver returns a response with the exception message and status
+ * code.
  *
  * @author Glynn Forrest <me@glynnforrest.com>
  **/
 class DenyAccessResolver implements ResolverInterface
 {
-    protected $message;
-
-    public function __construct($message = 'You do not have permission to access this resource.')
-    {
-        $this->message = $message;
-    }
-
     public function onException(BlockadeException $exception, Request $request)
     {
         return new Response($this->message, 403);
     }
 
-    public function getSupportedExceptions()
+    public function supportsDriver(DriverInterface $driver)
     {
         return true;
     }
 
-    public function getSupportedDrivers()
+    public function supportsException(BlockadeException $exception)
     {
         return true;
     }
-
 }

@@ -197,7 +197,7 @@ class Firewall
             $this->name,
             $request->getUri()
         );
-        throw new AuthenticationException($this->security, $message);
+        throw AuthenticationException::from($this->security, $message);
     }
 
     protected function failAuthorization(Request $request, $permission)
@@ -208,7 +208,7 @@ class Firewall
             $request->getUri(),
             $permission
         );
-        throw new AuthorizationException($this->security, $message);
+        throw AuthorizationException::from($this->security, $message);
     }
 
     protected function failAnonymous(Request $request)
@@ -218,7 +218,7 @@ class Firewall
             $this->name,
             $request->getUri()
         );
-        throw new AnonymousException($this->security, $message);
+        throw AnonymousException::from($this->security, $message);
     }
 
 }

@@ -18,17 +18,21 @@ abstract class BlockadeException extends \Exception
      *
      * @param DriverInterface $driver The driver
      */
-    public static function from(DriverInterface $driver, $message = '', $code = 403, \Exception $previous = null)
+    public static function from(DriverInterface $driver, $message = '', $code = 0, \Exception $previous = null)
     {
-        $self = new static($message, $code, $previous);
+        //make sure that empty arguments don't get passed to exceptions as
+        //they have default messages and codes.
+        $self = $message ? ($code ? new static($message, $code, $previous) : new static($message)) : new static();
+
         $self->setDriver($driver);
 
         return $self;
     }
 
     /**
-     * Set the driver that created this exception. This can be used by
-     * resolvers to determine how to handle a violation.
+     * Set the driver that created this exception. This is used by the
+     * exception listener to determine which resolvers to use to handle a
+     * violation.
      *
      * @param DriverInterface $driver The driver
      */

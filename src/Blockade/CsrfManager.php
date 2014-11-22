@@ -4,7 +4,6 @@ namespace Blockade;
 
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Blockade\Exception\CsrfTokenException;
-use Blockade\Driver\CsrfDriver;
 
 /**
  * CsrfManager
@@ -14,13 +13,11 @@ use Blockade\Driver\CsrfDriver;
 class CsrfManager
 {
 
-    protected $driver;
     protected $session;
     protected $session_key;
 
-    public function __construct(SessionInterface $session, $driver = null)
+    public function __construct(SessionInterface $session)
     {
-        $this->driver = new CsrfDriver();
         $this->session = $session;
         $this->session_key = 'blockade.csrf.';
     }

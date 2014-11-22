@@ -4,7 +4,6 @@ namespace Blockade\EventListener;
 
 use Blockade\Resolver\ResolverInterface;
 use Blockade\Driver\DriverInterface;
-use Blockade\Driver\CsrfDriver;
 use Blockade\Exception\BlockadeException;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -101,13 +100,6 @@ class BlockadeExceptionListener implements EventSubscriberInterface
 
     public function resolverSupportsDriver(ResolverInterface $resolver, DriverInterface $driver)
     {
-        //If the exception comes from the CsrfDriver, imply
-        //support. Support for csrf can be disabled by not including
-        //CsrfException in getSupportedExceptions.
-        if ($driver instanceof CsrfDriver) {
-            return true;
-        }
-
         $supported = $resolver->getSupportedDrivers();
 
         if (true === $supported) {

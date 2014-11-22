@@ -12,10 +12,6 @@ use Blockade\Driver\DriverInterface;
  **/
 class CredentialsException extends BlockadeException
 {
-
-    public function __construct(DriverInterface $driver, $message = 'Bad credentials supplied', \Exception $previous = null)
-    {
-        parent::__construct($driver, $message, 401, $previous);
-    }
-
+    protected $message = 'Bad credentials supplied';
+    protected $code = 401;
 }

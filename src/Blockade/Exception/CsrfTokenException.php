@@ -11,4 +11,5 @@ namespace Blockade\Exception;
 class CsrfTokenException extends BlockadeException
 {
     protected $message = 'Invalid CSRF token supplied';
+    protected $code = 403;
 }

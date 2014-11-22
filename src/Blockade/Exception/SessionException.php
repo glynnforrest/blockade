@@ -12,10 +12,6 @@ use Blockade\Driver\DriverInterface;
  **/
 class SessionException extends BlockadeException
 {
-
-    public function __construct(DriverInterface $driver, $message = 'Session is invalid', \Exception $previous = null)
-    {
-        parent::__construct($driver, $message, 403, $previous);
-    }
-
+    protected $message = 'Session is invalid';
+    protected $code = 403;
 }

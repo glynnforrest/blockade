@@ -11,10 +11,6 @@ use Blockade\Driver\DriverInterface;
  **/
 class AuthenticationException extends BlockadeException
 {
-
-    public function __construct(DriverInterface $driver, $message = 'Authentication required', \Exception $previous = null)
-    {
-        parent::__construct($driver, $message, 401, $previous);
-    }
-
+    protected $message = 'Authentication required';
+    protected $code = 401;
 }

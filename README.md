@@ -29,7 +29,7 @@ composer.json file:
 ```json
 {
     "require": {
-        "glynnforrest/blockade": "0.1.*"
+        "glynnforrest/blockade": "0.2.*"
     }
 }
 ```

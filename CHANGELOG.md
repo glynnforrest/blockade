@@ -1,5 +1,18 @@
 Changelog
 =========
+
+### 0.2.0 2014-12-01
+
+* DriverInterface is now optional for instances of
+  BlockadeException. A driver can still be associated with an
+  exception by using `setDriver()` or the `from()` factory method.
+* Inverting the logic of resolvers supporting exceptions and
+  drivers. The methods `supports()` and `supportsException()` are now
+  used.
+* Removing Csrf features - they now live at glynnforrest/reform.
+* For ease of extension, RedirectResolver now uses a separate
+  `createUrl()` method to construct the url to redirect to.
+
 ### 0.1.2 2014-06-08
 
 Adding a RequestListener to automatically give the Request to

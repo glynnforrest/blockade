@@ -50,11 +50,6 @@ class RedirectResolver implements ResolverInterface
             );
         }
 
-        //if tampering is evident, log the user out
-        if ($exception instanceof CsrfTokenException) {
-            $exception->getDriver()->logout();
-        }
-
         return new RedirectResponse($url);
     }
 

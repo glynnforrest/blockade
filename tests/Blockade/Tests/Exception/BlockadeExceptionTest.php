@@ -25,7 +25,6 @@ class BlockadeExceptionTest extends \PHPUnit_Framework_TestCase
             array('Authentication', 'Authentication required', 401),
             array('Authorization', 'Access denied', 403),
             array('Credentials', 'Bad credentials supplied', 401),
-            array('CsrfToken', 'Invalid CSRF token supplied', 403),
             array('Session', 'Session is invalid', 403),
         );
     }

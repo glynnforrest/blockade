@@ -31,15 +31,26 @@ class RedirectResolver implements ResolverInterface
         $this->deny_url = $deny_url;
     }
 
-    public function onException(BlockadeException $exception, Request $request)
+    /**
+     * Create the url to redirect to.
+     *
+     * @param BlockadeException $exception The exception
+     * @param Request           $request   The request that caused the exception
+     */
+    protected function createUrl(BlockadeException $exception, Request $request)
     {
         //decide where to redirect. login_url for unauthenticated or
         //bad credentials, deny_url for unauthorized or anything else
         if ($exception instanceof AuthenticationException || $exception instanceof CredentialsException) {
-            $url = $this->login_url;
-        } else {
-            $url = $this->deny_url;
+            return $this->login_url.'/to'.$request->getPathInfo();
         }
+
+        return $this->deny_url;
+    }
+
+    public function onException(BlockadeException $exception, Request $request)
+    {
+        $url = $this->createUrl($exception, $request);
 
         //check for a potential redirect loop
         if ($request->getPathInfo() === $url && $request->getMethod() === 'GET') {

@@ -27,4 +27,10 @@ interface DriverInterface
 
     public function hasPermission($permission);
 
+    /**
+     * Get the logged in user, or null if not authenticated.
+     *
+     * @return UserInterface|null The logged in user
+     */
+    public function getUser();
 }

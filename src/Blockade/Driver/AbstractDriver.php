@@ -15,6 +15,7 @@ abstract class AbstractDriver implements DriverInterface
 {
 
     protected $request;
+    protected $user;
 
     public function setRequest(Request $request)
     {
@@ -44,4 +45,8 @@ abstract class AbstractDriver implements DriverInterface
         return $this->request->getSession();
     }
 
+    public function getUser()
+    {
+        return $this->user;
+    }
 }

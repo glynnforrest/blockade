@@ -3,6 +3,7 @@
 namespace Blockade\Driver;
 
 use Blockade\Driver\AbstractDriver;
+use Blockade\User\BasicUser;
 
 /**
  * PassDriver
@@ -36,4 +37,8 @@ class PassDriver extends AbstractDriver
         return true;
     }
 
+    public function getUser()
+    {
+        return new BasicUser('admin', 'Admin User');
+    }
 }

@@ -62,12 +62,11 @@ class FirewallListener implements EventSubscriberInterface
     {
         $request = $event->getRequest();
         foreach ($this->firewalls as $firewall) {
-            if ($firewall->check($request)) {
-                return true;
+            //firewalls returns true for an exemption, so skip others
+            if (true === $firewall->check($request)) {
+                return;
             }
         }
-
-        return true;
     }
 
     public static function getSubscribedEvents()

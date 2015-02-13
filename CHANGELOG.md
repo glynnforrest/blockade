@@ -1,6 +1,13 @@
 Changelog
 =========
 
+### 0.2.1 2015-02-13
+
+* Adding a very simple UserInterface with two methods,
+  `getIdentifier()` and `getHumanIdentifier()`.
+* Adding additional `getUser()` method to DriverInterface.
+* Adding BasicUser, a simple implementation of UserInterface.
+
 ### 0.2.0 2014-12-01
 
 * DriverInterface is now optional for instances of

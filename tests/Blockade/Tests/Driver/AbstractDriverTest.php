@@ -2,8 +2,6 @@
 
 namespace Blockade\Tests\Driver;
 
-require_once __DIR__ . '/../../../bootstrap.php';
-
 /**
  * AbstractDriverTest
  *

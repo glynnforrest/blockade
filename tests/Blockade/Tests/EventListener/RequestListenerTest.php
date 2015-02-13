@@ -8,8 +8,6 @@ use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\HttpFoundation\Request;
 
-require_once __DIR__ . '/../../../bootstrap.php';
-
 /**
  * RequestListenerTest
  *

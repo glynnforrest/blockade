@@ -2,8 +2,6 @@
 
 namespace Blockade\Tests;
 
-require_once __DIR__ . '/../../bootstrap.php';
-
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestMatcher;
 use Blockade\Firewall;

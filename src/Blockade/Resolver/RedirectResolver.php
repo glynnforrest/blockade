@@ -9,6 +9,7 @@ use Blockade\Exception\AuthenticationException;
 use Blockade\Exception\CredentialsException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * RedirectResolver
@@ -48,8 +49,27 @@ class RedirectResolver implements ResolverInterface
         return $this->deny_url;
     }
 
+    /**
+     * Create a response for XmlHttpRequests.
+     *
+     * @param BlockadeException $exception The exception
+     * @param Request           $request   The request that caused the exception
+     */
+    protected function createXmlHttpResponse(BlockadeException $exception, Request $request)
+    {
+        if ($exception instanceof AuthenticationException || $exception instanceof CredentialsException) {
+            return new Response('Authentication required', Response::HTTP_UNAUTHORIZED);
+        }
+
+        return new Response('Access denied', Response::HTTP_FORBIDDEN);
+    }
+
     public function onException(BlockadeException $exception, Request $request)
     {
+        if ($request->isXmlHttpRequest()) {
+            return $this->createXmlHttpResponse($exception, $request);
+        }
+
         $url = $this->createUrl($exception, $request);
 
         //check for a potential redirect loop
